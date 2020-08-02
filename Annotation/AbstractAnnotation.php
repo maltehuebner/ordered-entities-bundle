@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Criticalmass\OrderedEntities\Annotation;
+namespace MalteHuebner\OrderedEntitiesBundle\OrderedEntities\Annotation;
 
 abstract class AbstractAnnotation
 {

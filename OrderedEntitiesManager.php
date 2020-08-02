@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Criticalmass\OrderedEntities;
+namespace MalteHuebner\OrderedEntitiesBundle\OrderedEntities;
 
-use App\Criticalmass\OrderedEntities\CriteriaBuilder\CriteriaBuilderInterface;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\CriteriaBuilder\CriteriaBuilderInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 class OrderedEntitiesManager implements OrderedEntitiesManagerInterface

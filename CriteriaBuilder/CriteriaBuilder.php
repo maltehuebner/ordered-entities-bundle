@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace App\Criticalmass\OrderedEntities\CriteriaBuilder;
+namespace MalteHuebner\OrderedEntitiesBundle\OrderedEntities\CriteriaBuilder;
 
-use App\Criticalmass\OrderedEntities\Annotation\AbstractAnnotation;
-use App\Criticalmass\OrderedEntities\Annotation\Boolean;
-use App\Criticalmass\OrderedEntities\Annotation\Identical;
-use App\Criticalmass\OrderedEntities\Annotation\Order;
-use App\Criticalmass\OrderedEntities\OrderedEntityInterface;
-use App\Criticalmass\OrderedEntities\SortOrder;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\Annotation\AbstractAnnotation;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\Annotation\Boolean;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\Annotation\Identical;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\Annotation\Order;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\OrderedEntityInterface;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\SortOrder;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Collections\Criteria;
 

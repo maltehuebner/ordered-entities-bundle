@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Criticalmass\OrderedEntities\CriteriaBuilder;
+namespace MalteHuebner\OrderedEntitiesBundle\OrderedEntities\CriteriaBuilder;
 
-use App\Criticalmass\OrderedEntities\OrderedEntityInterface;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\OrderedEntityInterface;
 use Doctrine\Common\Collections\Criteria;
 
 interface CriteriaBuilderInterface
