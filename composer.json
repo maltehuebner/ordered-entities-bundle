@@ -7,5 +7,10 @@
             "email": "maltehuebner@gmx.org"
         }
     ],
-    "require": {}
+    "require": {
+        "symfony/http-kernel": "^5.1"
+    },
+    "autoload": {
+        "psr-4": { "MalteHuebner\\OrderedEntitiesBundle\\": "src" }
+    }
 }
