@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace MalteHuebner\OrderedEntitiesBundle\OrderedEntities\TwigExtension;
+namespace MalteHuebner\OrderedEntitiesBundle\TwigExtension;
 
-use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\OrderedEntitiesManagerInterface;
-use MalteHuebner\OrderedEntitiesBundle\OrderedEntities\OrderedEntityInterface;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntitiesManagerInterface;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntityInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
