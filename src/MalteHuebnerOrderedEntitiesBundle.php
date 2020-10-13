@@ -2,6 +2,8 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle;
 
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
 class MalteHuebnerOrderedEntitiesBundle extends Bundle
 {
 
