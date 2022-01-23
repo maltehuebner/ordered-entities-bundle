@@ -13,8 +13,7 @@ use Doctrine\Common\Collections\Criteria;
 
 class CriteriaBuilder implements CriteriaBuilderInterface
 {
-    /** @var Reader $annotationReader */
-    protected $annotationReader;
+    protected Reader $annotationReader;
 
     public function __construct(Reader $annotationReader)
     {

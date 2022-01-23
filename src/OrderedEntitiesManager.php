@@ -7,11 +7,9 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class OrderedEntitiesManager implements OrderedEntitiesManagerInterface
 {
-    /** @var ManagerRegistry $registry  */
-    protected $registry;
+    protected ManagerRegistry $registry;
 
-    /** @var CriteriaBuilderInterface $criteriaBuilder */
-    protected $criteriaBuilder;
+    protected CriteriaBuilderInterface $criteriaBuilder;
 
     public function __construct(ManagerRegistry $registry, CriteriaBuilderInterface $criteriaBuilder)
     {

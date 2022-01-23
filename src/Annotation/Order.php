@@ -7,8 +7,7 @@ namespace MalteHuebner\OrderedEntitiesBundle\Annotation;
  */
 class Order extends AbstractAnnotation
 {
-    /** @var string $direction */
-    protected $direction;
+    protected string $direction;
 
     public function getDirection(): ?string
     {

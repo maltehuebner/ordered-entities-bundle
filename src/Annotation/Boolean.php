@@ -7,8 +7,7 @@ namespace MalteHuebner\OrderedEntitiesBundle\Annotation;
  */
 class Boolean extends AbstractAnnotation
 {
-    /** @var bool $value */
-    protected $value;
+    protected bool $value;
 
     public function getValue(): ?bool
     {

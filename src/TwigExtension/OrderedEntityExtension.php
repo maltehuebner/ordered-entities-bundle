@@ -9,8 +9,7 @@ use Twig\TwigFunction;
 
 class OrderedEntityExtension extends AbstractExtension
 {
-    /** @var OrderedEntitiesManagerInterface $orderedEntitiesManager */
-    protected $orderedEntitiesManager;
+    protected OrderedEntitiesManagerInterface $orderedEntitiesManager;
 
     public function __construct(OrderedEntitiesManagerInterface $orderedEntitiesManager)
     {
