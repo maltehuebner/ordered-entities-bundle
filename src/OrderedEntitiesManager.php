@@ -7,14 +7,11 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class OrderedEntitiesManager implements OrderedEntitiesManagerInterface
 {
-    protected ManagerRegistry $registry;
+    public function __construct(
+        private readonly ManagerRegistry $registry,
+        private readonly CriteriaBuilderInterface $criteriaBuilder
+    ) {
 
-    protected CriteriaBuilderInterface $criteriaBuilder;
-
-    public function __construct(ManagerRegistry $registry, CriteriaBuilderInterface $criteriaBuilder)
-    {
-        $this->registry = $registry;
-        $this->criteriaBuilder = $criteriaBuilder;
     }
 
     public function getPrevious(OrderedEntityInterface $orderedEntity): ?OrderedEntityInterface

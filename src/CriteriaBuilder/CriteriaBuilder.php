@@ -13,11 +13,10 @@ use Doctrine\Common\Collections\Criteria;
 
 class CriteriaBuilder implements CriteriaBuilderInterface
 {
-    protected Reader $annotationReader;
+    public function __construct(
+        private readonly Reader $annotationReader
+    ) {
 
-    public function __construct(Reader $annotationReader)
-    {
-        $this->annotationReader = $annotationReader;
     }
 
     public function build(OrderedEntityInterface $orderedEntity, string $direction): Criteria
