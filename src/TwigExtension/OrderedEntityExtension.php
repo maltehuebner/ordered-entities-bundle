@@ -9,11 +9,10 @@ use Twig\TwigFunction;
 
 class OrderedEntityExtension extends AbstractExtension
 {
-    protected OrderedEntitiesManagerInterface $orderedEntitiesManager;
+    public function __construct(
+        private readonly OrderedEntitiesManagerInterface $orderedEntitiesManager
+    ) {
 
-    public function __construct(OrderedEntitiesManagerInterface $orderedEntitiesManager)
-    {
-        $this->orderedEntitiesManager = $orderedEntitiesManager;
     }
 
     public function getFunctions(): array
