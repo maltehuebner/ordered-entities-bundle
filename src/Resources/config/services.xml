@@ -5,7 +5,6 @@
 
     <services>
         <service id="MalteHuebner\OrderedEntitiesBundle\CriteriaBuilder\CriteriaBuilder" public="true">
-            <argument type="service" id="annotation_reader" />
         </service>
 
         <service id="MalteHuebner\OrderedEntitiesBundle\OrderedEntitiesManager" public="true">
