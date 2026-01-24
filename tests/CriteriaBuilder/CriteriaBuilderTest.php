@@ -2,7 +2,6 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\Tests\CriteriaBuilder;
 
-use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\Common\Collections\Order;
 use MalteHuebner\OrderedEntitiesBundle\CriteriaBuilder\CriteriaBuilder;
@@ -17,7 +16,7 @@ class CriteriaBuilderTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->criteriaBuilder = new CriteriaBuilder(new AnnotationReader());
+        $this->criteriaBuilder = new CriteriaBuilder();
     }
 
     public function testBuildReturnsCriteria(): void
@@ -51,7 +50,7 @@ class CriteriaBuilderTest extends TestCase
         $this->assertSame(Order::Descending, $orderings['position']);
     }
 
-    public function testBuildWithIdenticalAnnotationAddsEqualityCondition(): void
+    public function testBuildWithIdenticalAttributeAddsEqualityCondition(): void
     {
         $entity = new TestEntity(
             new \DateTime('2024-01-15'),
@@ -66,7 +65,7 @@ class CriteriaBuilderTest extends TestCase
         $this->assertNotNull($criteria->getWhereExpression());
     }
 
-    public function testBuildWithBooleanAnnotationAddsConditionWithAnnotationValue(): void
+    public function testBuildWithBooleanAttributeAddsConditionWithAttributeValue(): void
     {
         $entity = new TestEntity(
             new \DateTime('2024-01-15'),
