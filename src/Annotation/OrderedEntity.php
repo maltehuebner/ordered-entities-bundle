@@ -2,9 +2,9 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\Annotation;
 
-/**
- * @Annotation
- */
+use Attribute;
+
+#[Attribute(Attribute::TARGET_CLASS)]
 class OrderedEntity extends AbstractAnnotation
 {
 

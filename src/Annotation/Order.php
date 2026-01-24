@@ -2,14 +2,17 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\Annotation;
 
-/**
- * @Annotation
- */
+use Attribute;
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
 class Order extends AbstractAnnotation
 {
-    protected string $direction;
+    public function __construct(
+        protected string $direction
+    ) {
+    }
 
-    public function getDirection(): ?string
+    public function getDirection(): string
     {
         return $this->direction;
     }

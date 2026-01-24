@@ -2,14 +2,17 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\Annotation;
 
-/**
- * @Annotation
- */
+use Attribute;
+
+#[Attribute(Attribute::TARGET_PROPERTY)]
 class Boolean extends AbstractAnnotation
 {
-    protected bool $value;
+    public function __construct(
+        protected bool $value
+    ) {
+    }
 
-    public function getValue(): ?bool
+    public function getValue(): bool
     {
         return $this->value;
     }
