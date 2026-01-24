@@ -2,9 +2,9 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\CriteriaBuilder;
 
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Boolean;
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Identical;
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Order;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Boolean;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Identical;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Order;
 use MalteHuebner\OrderedEntitiesBundle\OrderedEntityInterface;
 use MalteHuebner\OrderedEntitiesBundle\SortOrder;
 use Doctrine\Common\Collections\Criteria;
