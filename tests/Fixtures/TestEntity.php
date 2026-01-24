@@ -2,30 +2,22 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\Tests\Fixtures;
 
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Boolean;
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Identical;
-use MalteHuebner\OrderedEntitiesBundle\Annotation\Order;
-use MalteHuebner\OrderedEntitiesBundle\Annotation\OrderedEntity;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Boolean;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Identical;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\Order;
+use MalteHuebner\OrderedEntitiesBundle\Attribute\OrderedEntity;
 use MalteHuebner\OrderedEntitiesBundle\OrderedEntityInterface;
 
-/**
- * @OrderedEntity
- */
+#[OrderedEntity]
 class TestEntity implements OrderedEntityInterface
 {
-    /**
-     * @Order(direction="asc")
-     */
+    #[Order(direction: 'asc')]
     private \DateTimeInterface $dateTime;
 
-    /**
-     * @Identical
-     */
+    #[Identical]
     private string $category;
 
-    /**
-     * @Boolean(value=true)
-     */
+    #[Boolean(value: true)]
     private bool $enabled;
 
     private string $title;
