@@ -2,43 +2,36 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\CriteriaBuilder;
 
-use MalteHuebner\OrderedEntitiesBundle\Annotation\AbstractAnnotation;
 use MalteHuebner\OrderedEntitiesBundle\Annotation\Boolean;
 use MalteHuebner\OrderedEntitiesBundle\Annotation\Identical;
 use MalteHuebner\OrderedEntitiesBundle\Annotation\Order;
 use MalteHuebner\OrderedEntitiesBundle\OrderedEntityInterface;
 use MalteHuebner\OrderedEntitiesBundle\SortOrder;
-use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Collections\Criteria;
 
 class CriteriaBuilder implements CriteriaBuilderInterface
 {
-    public function __construct(
-        private readonly Reader $annotationReader
-    ) {
-
-    }
-
     public function build(OrderedEntityInterface $orderedEntity, string $direction): Criteria
     {
         $criteria = Criteria::create();
 
-        $criteria = $this->handleAnnotations($orderedEntity, $criteria, $direction);
+        $criteria = $this->handleAttributes($orderedEntity, $criteria, $direction);
 
         return $criteria;
     }
 
-    protected function handleAnnotations(OrderedEntityInterface $orderedEntity, Criteria $criteria, string $direction): Criteria
+    protected function handleAttributes(OrderedEntityInterface $orderedEntity, Criteria $criteria, string $direction): Criteria
     {
         $reflectionClass = new \ReflectionClass($orderedEntity);
         $properties = $reflectionClass->getProperties();
 
-        foreach ($properties as $key => $property) {
-            $annotations = $this->annotationReader->getPropertyAnnotations($property);
+        foreach ($properties as $property) {
+            $attributes = $property->getAttributes();
 
-            /** @var AbstractAnnotation $parameterAnnotation */
-            foreach ($annotations as $annotation) {
-                if ($annotation instanceof Order) {
+            foreach ($attributes as $attribute) {
+                $attributeInstance = $attribute->newInstance();
+
+                if ($attributeInstance instanceof Order) {
                     $getMethodName = sprintf('get%s', ucfirst($property->getName()));
 
                     $compareMethodName = $direction === SortOrder::ASC ? 'lt' : 'gt';
@@ -48,14 +41,14 @@ class CriteriaBuilder implements CriteriaBuilderInterface
                         ->andWhere(Criteria::expr()->$compareMethodName($property->getName(), $orderedEntity->$getMethodName()));
                 }
 
-                if ($annotation instanceof Identical) {
+                if ($attributeInstance instanceof Identical) {
                     $getMethodName = sprintf('get%s', ucfirst($property->getName()));
 
                     $criteria->andWhere(Criteria::expr()->eq($property->getName(), $orderedEntity->$getMethodName()));
                 }
 
-                if ($annotation instanceof Boolean) {
-                    $criteria->andWhere(Criteria::expr()->eq($property->getName(), $annotation->getValue()));
+                if ($attributeInstance instanceof Boolean) {
+                    $criteria->andWhere(Criteria::expr()->eq($property->getName(), $attributeInstance->getValue()));
                 }
             }
         }
