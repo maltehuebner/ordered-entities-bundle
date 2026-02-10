@@ -2,16 +2,36 @@
 
 namespace MalteHuebner\OrderedEntitiesBundle\DependencyInjection;
 
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use MalteHuebner\OrderedEntitiesBundle\CriteriaBuilder\CriteriaBuilder;
+use MalteHuebner\OrderedEntitiesBundle\OrderedEntitiesManager;
+use MalteHuebner\OrderedEntitiesBundle\TwigExtension\OrderedEntityExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class MalteHuebnerOrderedEntitiesExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.xml');
+        $criteriaBuilder = new Definition(CriteriaBuilder::class);
+        $criteriaBuilder->setPublic(true);
+        $container->setDefinition(CriteriaBuilder::class, $criteriaBuilder);
+
+        $orderedEntitiesManager = new Definition(OrderedEntitiesManager::class);
+        $orderedEntitiesManager->setPublic(true);
+        $orderedEntitiesManager->setArguments([
+            new Reference('doctrine'),
+            new Reference(CriteriaBuilder::class),
+        ]);
+        $container->setDefinition(OrderedEntitiesManager::class, $orderedEntitiesManager);
+
+        $twigExtension = new Definition(OrderedEntityExtension::class);
+        $twigExtension->setPublic(true);
+        $twigExtension->addTag('twig.extension');
+        $twigExtension->setArguments([
+            new Reference(OrderedEntitiesManager::class),
+        ]);
+        $container->setDefinition(OrderedEntityExtension::class, $twigExtension);
     }
 }
